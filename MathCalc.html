@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Calculadora</title>
+  <h1 align="center">Calculadora</h1>
+  <style>
+    body {
+      background-color: #eaf2e1;
+      font-family: Arial, sans-serif;
+    }
+    .calculator {
+      text-align: center;
+      margin: 0 auto;
+      width: 200px;
+      padding: 20px;
+      background-color: #c6e6c3;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    .calculator input {
+      width: 100%;
+      height: 40px;
+      margin-bottom: 10px;
+      font-size: 18px;
+      text-align: right;
+    }
+    .calculator button {
+      width: 40px;
+      height: 40px;
+      margin: 2px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="screen" disabled>
+    <br>
+    <button onclick="addToScreen('7')">7</button>
+    <button onclick="addToScreen('8')">8</button>
+    <button onclick="addToScreen('9')">9</button>
+    <button onclick="addToScreen('/')">/</button>
+    <br>
+    <button onclick="addToScreen('4')">4</button>
+    <button onclick="addToScreen('5')">5</button>
+    <button onclick="addToScreen('6')">6</button>
+    <button onclick="addToScreen('*')">*</button>
+    <br>
+    <button onclick="addToScreen('1')">1</button>
+    <button onclick="addToScreen('2')">2</button>
+    <button onclick="addToScreen('3')">3</button>
+    <button onclick="addToScreen('-')">-</button>
+    <br>
+    <button onclick="addToScreen('0')">0</button>
+    <button onclick="addToScreen('.')">.</button>
+    <button onclick="calculate()">=</button>
+    <button onclick="addToScreen('+')">+</button>
+    <br>
+    <button onclick="clearScreen()">C</button>
+  </div>
+
+  <script>
+    function addToScreen(value) {
+      document.getElementById('screen').value += value;
+    }
+
+    function clearScreen() {
+      document.getElementById('screen').value = '';
+    }
+
+    function calculate() {
+      var expression = document.getElementById('screen').value;
+      var result = eval(expression);
+      document.getElementById('screen').value = result;
+    }
+  </script>
+</body>
+</html>
+
+</html>
+<br><br><br>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tablas de multiplicar</title>
+  <h1 align="center">Tabalas De Multiplicar</h1>
+  <style>
+    body {
+      background-color: #eaf2e1;
+    }
+    #tabla-multiplicar {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: #c6e6c3;
+      padding: 20px;
+    }
+    #tabla-multiplicar table {
+      margin: 10px;
+    }
+    #tabla-multiplicar th,
+    #tabla-multiplicar td {
+      padding: 5px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="tabla-multiplicar"></div>
+
+  <script>
+    function generarTablasMultiplicar() {
+      var tabla = document.getElementById("tabla-multiplicar");
+
+      for (var i = 1; i <= 10; i++) {
+        var tablaIndividual = document.createElement("table");
+        tablaIndividual.innerHTML = "<caption>Tabla del " + i + "</caption>";
+
+        for (var j = 1; j <= 10; j++) {
+          var fila = document.createElement("tr");
+          var td = document.createElement("td");
+          td.textContent = i + " x " + j + " = " + (i * j);
+          fila.appendChild(td);
+          tablaIndividual.appendChild(fila);
+        }
+
+        tabla.appendChild(tablaIndividual);
+      }
+    }
+
+    generarTablasMultiplicar();
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Juego Matemático: Verdadero o Falso</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Juego Matemático: Verdadero o Falso</h1>
+    <div id="question"></div>
+    <button onclick="checkAnswer(true)">Verdadero</button>
+    <button onclick="checkAnswer(false)">Falso</button>
+    <div id="result"></div>
+
+    <script>
+      // Preguntas y respuestas
+      const questions = [
+        {
+          question: "2 + 2 = 4",
+          answer: true
+        },
+        {
+          question: "10 - 5 = 4",
+          answer: false
+        },
+        {
+          question: "3 * 3 = 9",
+          answer: true
+        },
+        {
+          question: "8 / 2 = 5",
+          answer: false
+        }
+      ];
+
+      let currentQuestion = 0;
+
+      function showQuestion() {
+        const questionDiv = document.getElementById("question");
+        questionDiv.textContent = questions[currentQuestion].question;
+      }
+
+      function checkAnswer(userAnswer) {
+        const resultDiv = document.getElementById("result");
+        const correctAnswer = questions[currentQuestion].answer;
+
+        if (userAnswer === correctAnswer) {
+          resultDiv.textContent = "¡Correcto!";
+        } else {
+          resultDiv.textContent = "Incorrecto :(";
+        }
+
+        // Pasar a la siguiente pregunta
+        currentQuestion++;
+
+        // Verificar si hay más preguntas o finalizar el juego
+        if (currentQuestion < questions.length) {
+          setTimeout(showQuestion, 1000);
+        } else {
+          resultDiv.textContent = "¡Juego terminado!";
+        }
+      }
+
+      // Iniciar el juego mostrando la primera pregunta
+      showQuestion();
+    </script>
+  </body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tablas de multiplicar</title>
+  </head>
+  <body>
+    <h1>Video sobre las tablas de multiplicar</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/stDJ0k6i1mQ" frameborder="0" allowfullscreen></iframe>
+  </body>
+</html>
+ 
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Musica Relagante</title>
+  </head>
+  <body>
+    <h1>Musica Relagante</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gSBogiSbF1Y?autoplay=1" frameborder="0" allowfullscreen></iframe>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    function mostrarHora() {
+      var fecha = new Date();
+      var horas = fecha.getHours();
+      var minutos = fecha.getMinutes();
+
+      var tiempoTranscurrido = Math.floor(performance.now() / 1000);
+
+      var horaActual = horas + ':' + (minutos < 10 ? '0' : '') + minutos;
+      var tiempoTranscurridoTexto = 'Tiempo transcurrido: ' + tiempoTranscurrido + ' segundos';
+
+      document.getElementById('hora').textContent = horaActual;
+      document.getElementById('tiempo').textContent = tiempoTranscurridoTexto;
+
+      setTimeout(mostrarHora, 1000); // Actualizar cada segundo
+    }
+  </script>
+  <style>
+    #reloj {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #fff;
+      color: #000;
+    }
+  </style>
+</head>
+<body onload="mostrarHora()">
+  <div id="reloj">
+    <span id="hora"></span><br>
+    <span id="tiempo"></span>
+  </div>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Estilos para el contenido principal */
+    #contenido {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Estilos para la sección de comentarios */
+    #comentarios {
+      margin-top: 20px;
+      border-top: 1px solid #ccc;
+      padding-top: 20px;
+    }
+
+    /* Estilos para los comentarios */
+    .comentario {
+      margin-bottom: 20px;
+    }
+
+    .comentario .nombre {
+      font-weight: bold;
+    }
+
+    .comentario .fecha {
+      color: #999;
+      font-size: 0.8em;
+    }
+
+    .comentario .mensaje {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="contenido">
+    <h1>Comentarios</h1>
+    <p>Aquí vas a ver los comentarios de la pagina</p>
+
+    <div id="comentarios">
+      <h2>Comentarios</h2>
+      <div id="comentarios-container"></div>
+
+      <form id="formulario-comentarios" onsubmit="agregarComentario(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+        <br>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" required></textarea>
+        <br>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function cargarComentarios() {
+      var comentariosContainer = document.getElementById('comentarios-container');
+      var comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+
+      comentarios.forEach(function(comentario) {
+        var nuevoComentario = '<div class="comentario">' +
+                                '<span class="nombre">' + comentario.nombre + '</span>' +
+                                '<span class="fecha">' + comentario.fecha + '</span>' +
+                                '<p class="mensaje">' + comentario.mensaje + '</p>' +
+                              '</div>';
+
+        comentariosContainer.innerHTML += nuevoComentario;
+      });
+    }
+
+    function agregarComentario(event) {
+      event.preventDefault();
+
+      var nombre = document.getElementById('nombre').value;
+      var mensaje = document.getElementById('mensaje').value;
+
+      var fechaActual = new Date();
+      var fecha = fechaActual.getDate() + ' de ' + obtenerNombreMes(fechaActual.getMonth()) + ' de ' + fechaActual.getFullYear();
+
+      var comentario = {
+        nombre: nombre,
+        mensaje: mensaje,
+        fecha: fecha
+      };
+
+      var comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      comentarios.push(comentario);
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+
+      var comentariosContainer = document.getElementById('comentarios-container');
+      var nuevoComentario = '<div class="comentario">' +
+                              '<span class="nombre">' + nombre + '</span>' +
+                              '<span class="fecha">' + fecha + '</span>' +
+                              '<p class="mensaje">' + mensaje + '</p>' +
+                            '</div>';
+
+      comentariosContainer.innerHTML += nuevoComentario;
+
+      document.getElementById('formulario-comentarios').reset();
+    }
+
+    function obtenerNombreMes(numeroMes) {
+      var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      return meses[numeroMes];
+    }
+
+    // Cargar los comentarios al cargar la página
+    cargarComentarios();
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Estilo para la barra de menú */
+    #menu {
+      background-color: #f2f2f2;
+      overflow: hidden;
+    }
+
+    /* Estilo para los elementos del menú */
+    #menu a {
+      float: left;
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Estilo para los elementos del menú al pasar el ratón */
+    #menu a:hover {
+      background-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <a href="#uso">Uso</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="#terminos">Términos y condiciones</a>
+    <!-- Agrega más opciones de menú según sea necesario -->
+  </div>
+
+  <!-- Contenido de la página -->
+  <h1>Contenido de la página</h1>
+      <p>En nuestra página, encontrarás una variedad de información y recursos para ayudarte en tu viaje. Ya sea que estés buscando consejos prácticos, inspiración o conocimientos en un tema específico, ¡estamos aquí para ayudarte!</p>
+
+
+  <h2 id="uso">Uso</h2>
+      <p>Navega a través de nuestras diversas secciones y descubre lo que tenemos para ofrecer. Te ofrecemos artículos informativos, tutoriales útiles, guías paso a paso y mucho más. Nuestro objetivo es proporcionarte contenido de calidad que sea relevante y útil para tus necesidades.</p>
+
+
+  <h2 id="privacidad">Privacidad</h2>
+  <p>Podemos actualizar nuestra política de privacidad de vez en cuando. Te recomendamos revisar esta página periódicamente para estar al tanto de los cambios. Al utilizar nuestro sitio web, aceptas las condiciones descritas en esta política de privacidad actualizada.</p>
+
+
+  <h2 id="terminos">Términos y condiciones</h2>
+     <p>Podemos modificar estos términos y condiciones en cualquier momento. Las modificaciones entrarán en vigor inmediatamente después de su publicación en esta página. Se recomienda revisar esta página regularmente para estar al tanto de los cambios.</p>
+
+ <h2>Contacto</h2>
+    <p>Si tienes alguna pregunta o inquietud acerca de nuestros términos y condiciones, no dudes en contactarnos a través de nuestro formulario de contacto. Estaremos encantados de asistirte y brindarte la información adicional que necesites.
+      <p>Conctacto : andresplay0500@gmail.com</p></p>
+  </div>
+
+
+</body>
+</html>
